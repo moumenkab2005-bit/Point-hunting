@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة النقاط</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- صفحة تسجيل الدخول -->
+        <div id="loginPage" class="page active">
+            <div class="form-container">
+                <h2>تسجيل الدخول</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginUsername">الاسم:</label>
+                        <input type="text" id="loginUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">كلمة السر:</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+                    <p class="switch-form">ليس لديك حساب؟ <a href="#" id="showRegister">إنشاء حساب</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- صفحة إنشاء حساب -->
+        <div id="registerPage" class="page">
+            <div class="form-container">
+                <h2>إنشاء حساب</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerUsername">الاسم:</label>
+                        <input type="text" id="registerUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">كلمة السر:</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">تأكيد كلمة السر:</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">إنشاء حساب</button>
+                    <p class="switch-form">لديك حساب بالفعل؟ <a href="#" id="showLogin">تسجيل الدخول</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- الصفحة الرئيسية -->
+        <div id="mainPage" class="page">
+            <header>
+                <div class="header-right">
+                    <button id="adminBtn" class="btn btn-secondary">القاعدة</button>
+                    <button id="redeemCodeBtn" class="btn btn-secondary">استرداد كود</button>
+                </div>
+                <div class="header-left">
+                    <div class="points-display">
+                        <span class="green-points">نقاط خضراء: <span id="greenPointsDisplay">0</span></span>
+                        <span class="gold-points">نقاط ذهبية: <span id="goldPointsDisplay">0</span></span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <div class="game-section">
+                    <h1>العب واحصل على نقاط</h1>
+                    <button id="playBtn" class="btn btn-large">ابدأ اللعب</button>
+                </div>
+
+                <div class="sidebar-left">
+                    <button id="storeBtn" class="btn btn-store">المتجر</button>
+                </div>
+
+                <div class="leaderboard">
+                    <h2>أعلى اللاعبين</h2>
+                    <div id="leaderboardList">
+                        <div class="leaderboard-item">
+                            <span class="rank">1</span>
+                            <span class="player-name">لاعب1</span>
+                            <span class="player-points">100 نقطة ذهبية</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="rank">2</span>
+                            <span class="player-name">لاعب2</span>
+                            <span class="player-points">80 نقطة ذهبية</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="rank">3</span>
+                            <span class="player-name">لاعب3</span>
+                            <span class="player-points">60 نقطة ذهبية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحة اللعبة -->
+        <div id="gamePage" class="page">
+            <div class="game-container">
+                <h2>لعبة الألعاب</h2>
+                <div id="gameBoard" class="game-board">
+                    <!-- سيتم إنشاء المربعات بواسطة JavaScript -->
+                </div>
+                <div class="game-controls">
+                    <button id="helpBtn" class="btn btn-secondary">مساعدة</button>
+                    <button id="exitGameBtn" class="btn btn-danger">خروج</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحة القاعدة (المسؤول) -->
+        <div id="adminPage" class="page">
+            <div class="form-container">
+                <h2>القاعدة</h2>
+                <form id="adminForm">
+                    <div class="form-group">
+                        <label for="adminUsername">الاسم:</label>
+                        <input type="text" id="adminUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">كلمة السر:</label>
+                        <input type="password" id="adminPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">دخول</button>
+                    <button type="button" class="btn btn-secondary" id="backToMainFromAdmin">عودة للرئيسية</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- صفحة إنشاء الكود -->
+        <div id="codeGeneratorPage" class="page">
+            <div class="form-container">
+                <h2>إنشاء كود</h2>
+                <form id="codeForm">
+                    <div class="form-group">
+                        <label for="pointsAmount">عدد النقاط:</label>
+                        <input type="number" id="pointsAmount" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>نوع النقاط:</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="pointsType" value="green" checked> نقاط خضراء
+                            </label>
+                            <label>
+                                <input type="radio" name="pointsType" value="gold"> نقاط ذهبية
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">إنشاء</button>
+                    <button type="button" class="btn btn-secondary" id="backToMainFromCode">عودة للرئيسية</button>
+                </form>
+                <div id="generatedCode" class="generated-code"></div>
+            </div>
+        </div>
+
+        <!-- صفحة استرداد الكود -->
+        <div id="redeemPage" class="page">
+            <div class="form-container">
+                <h2>استرداد كود</h2>
+                <form id="redeemForm">
+                    <div class="form-group">
+                        <label for="redeemCode">الكود:</label>
+                        <input type="text" id="redeemCode" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">استرداد</button>
+                    <button type="button" class="btn btn-secondary" id="backToMainFromRedeem">عودة للرئيسية</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- صفحة المتجر -->
+        <div id="storePage" class="page">
+            <div class="store-container">
+                <h2>المتجر</h2>
+                <div class="store-items">
+                    <div class="store-item">
+                        <h3>تبديل النقاط</h3>
+                        <p>كل 20 نقطة خضراء = 1 نقطة ذهبية</p>
+                        <button id="exchangeBtn" class="btn btn-primary">تبديل</button>
+                    </div>
+                    <div class="store-item">
+                        <h3>مساعدة</h3>
+                        <p>تكلفة: 10 نقاط خضراء</p>
+                        <button id="buyHelpBtn" class="btn btn-primary">شراء</button>
+                    </div>
+                </div>
+                <button id="backToMainFromStore" class="btn btn-secondary">عودة للرئيسية</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
